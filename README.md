@@ -1,37 +1,77 @@
 # WebCite
 
-WebCite is a local-only Chrome extension for building website citations quickly.
+WebCite is a lightweight Chrome extension that extracts webpage citation metadata and formats citations in MLA, APA, and Chicago styles.
+
+The extension runs entirely locally in the browser:
+- no accounts
+- no APIs
+- no tracking
+- no AI generation
+- no external requests beyond the current page
 
 ## Features
 
-- Extracts citation fields from the current webpage
-- Uses strict fallbacks instead of broad page scraping
-- Shows editable citation fields
-- Shows confidence labels for each extracted field
-- Supports MLA 9, APA 7, Chicago Note, and Chicago Bibliography
-- Remembers the last selected format
-- Renders a styled citation preview with hanging-indent layout
-- Copies rich text when supported, with plain text fallback
-- Requires no API, no account, no backend, and no AI
+- Automatic webpage citation extraction
+- MLA 9, APA 7, Chicago Notes, and Chicago Bibliography formats
+- Editable citation fields
+- Confidence indicators for extracted metadata
+- Rich formatted citation preview
+- One-click copy
+- Persistent format preference
+- Local-first architecture
 
-## Install locally
+## Why It Exists
 
-1. Unzip the project folder.
-2. Open Chrome and go to `chrome://extensions`.
-3. Turn on Developer Mode.
-4. Click **Load unpacked**.
-5. Select the `webcite-extension` folder.
+Website citation tools are often:
+- cluttered
+- ad-heavy
+- inaccurate
+- opaque about where metadata came from
 
-## Extraction philosophy
+WebCite was built as a cleaner and more transparent alternative.
 
-WebCite favors leaving fields blank over filling them with risky guesses.
+The extension intentionally prefers:
 
-Preferred source order:
+> leaving fields blank over confidently extracting incorrect information.
 
-1. JSON-LD / structured data
-2. Standard metadata tags
-3. Visible article/header-scoped elements
-4. Cautious fallback
-5. Blank
+## Extraction Strategy
 
-This helps avoid accidentally citing footer dates, cache timestamps, related articles, ads, or navigation content.
+WebCite uses a confidence hierarchy when extracting metadata:
+
+### High Confidence
+- JSON-LD structured data
+- standard citation meta tags
+
+### Medium Confidence
+- Open Graph metadata
+- article-scoped HTML elements
+
+### Low Confidence
+- cautious fallback parsing
+
+Fields with uncertain provenance are surfaced to the user for review and manual correction.
+
+## Supported Citation Formats
+
+- MLA 9
+- APA 7
+- Chicago Notes
+- Chicago Bibliography
+
+## Installation
+
+1. Download or clone this repository
+2. Open Chrome and navigate to:
+
+`chrome://extensions`
+
+3. Enable **Developer Mode**
+4. Click **Load unpacked**
+5. Select the extension folder
+
+## Tech Stack
+
+- JavaScript
+- Chrome Extension APIs
+- Local DOM parsing
+- Structured metadata extraction
