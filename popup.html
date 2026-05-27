@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebCite</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <div>
+          <p class="eyebrow">Website citation builder</p>
+          <h1>WebCite</h1>
+        </div>
+        <button id="refreshButton" class="ghost-button" type="button">Refresh</button>
+      </header>
+
+      <section class="notice" id="statusBox">Reading this page…</section>
+
+      <section class="panel">
+        <h2>Citation fields</h2>
+        <p class="helper">Review and edit anything the page metadata missed. WebCite leaves uncertain fields blank where possible.</p>
+
+        <label>
+          <span class="field-heading"><span>Author</span><span id="authorTrust" class="trust-badge missing">Missing</span></span>
+          <input id="author" type="text" placeholder="Last, First or Organization" />
+          <small id="authorSource" class="field-source">Not found</small>
+        </label>
+
+        <label>
+          <span class="field-heading"><span>Page title</span><span id="pageTitleTrust" class="trust-badge missing">Missing</span></span>
+          <input id="pageTitle" type="text" placeholder="Article or page title" />
+          <small id="pageTitleSource" class="field-source">Not found</small>
+        </label>
+
+        <label>
+          <span class="field-heading"><span>Website title</span><span id="websiteTitleTrust" class="trust-badge missing">Missing</span></span>
+          <input id="websiteTitle" type="text" placeholder="Website name" />
+          <small id="websiteTitleSource" class="field-source">Not found</small>
+        </label>
+
+        <label>
+          <span class="field-heading"><span>Publisher / organization</span><span id="publisherTrust" class="trust-badge missing">Missing</span></span>
+          <input id="publisher" type="text" placeholder="Publisher or owning organization" />
+          <small id="publisherSource" class="field-source">Not found</small>
+        </label>
+
+        <div class="date-grid">
+          <label>
+            <span class="field-heading"><span>Published</span><span id="publishedDateTrust" class="trust-badge missing">Missing</span></span>
+            <input id="publishedDate" type="text" placeholder="YYYY-MM-DD" />
+            <small id="publishedDateSource" class="field-source">Not found</small>
+          </label>
+
+          <label>
+            <span class="field-heading"><span>Updated</span><span id="updatedDateTrust" class="trust-badge missing">Missing</span></span>
+            <input id="updatedDate" type="text" placeholder="YYYY-MM-DD" />
+            <small id="updatedDateSource" class="field-source">Not found</small>
+          </label>
+        </div>
+
+        <label>
+          <span class="field-heading"><span>Accessed</span><span id="accessedDateTrust" class="trust-badge missing">Missing</span></span>
+          <input id="accessedDate" type="text" placeholder="YYYY-MM-DD" />
+          <small id="accessedDateSource" class="field-source">Generated today</small>
+        </label>
+
+        <label>
+          <span class="field-heading"><span>URL</span><span id="urlTrust" class="trust-badge missing">Missing</span></span>
+          <input id="url" type="text" placeholder="https://example.com/page" />
+          <small id="urlSource" class="field-source">Not found</small>
+        </label>
+      </section>
+
+      <section class="panel">
+        <h2>Format</h2>
+        <div class="format-toggle" role="group" aria-label="Citation format">
+          <button class="format-button" data-format="mla" type="button">MLA 9</button>
+          <button class="format-button" data-format="apa" type="button">APA 7</button>
+          <button class="format-button" data-format="chicago-note" type="button">Chicago Note</button>
+          <button class="format-button" data-format="chicago-bib" type="button">Chicago Bib</button>
+        </div>
+      </section>
+
+      <section class="panel output-panel">
+        <div class="output-header">
+          <div>
+            <h2>Generated citation</h2>
+            <p class="helper output-helper">Styled preview uses hanging-indent layout. Copy preserves line breaks and tries rich formatting first.</p>
+          </div>
+          <button id="copyButton" class="primary-button" type="button">Copy</button>
+        </div>
+        <div id="citationPreview" class="citation-preview" aria-label="Formatted citation preview"></div>
+        <details class="plain-details">
+          <summary>Plain text view</summary>
+          <textarea id="citationOutput" readonly></textarea>
+        </details>
+        <p id="copyStatus" class="copy-status" aria-live="polite"></p>
+      </section>
+
+      <footer>
+        WebCite reads page metadata locally. Check the fields before using a citation.
+      </footer>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
