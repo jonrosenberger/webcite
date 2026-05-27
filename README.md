@@ -75,3 +75,7 @@ Fields with uncertain provenance are surfaced to the user for review and manual 
 - Chrome Extension APIs
 - Local DOM parsing
 - Structured metadata extraction
+
+## Development Notes
+
+WebCite was developed through iterative human-directed AI collaboration, with a focus on product scope, extraction reliability, citation formatting accuracy, and trust-oriented UX decisions.
